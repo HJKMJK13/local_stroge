@@ -118,8 +118,16 @@ function AddData(){
             name:name,
             age:age,
             address:address,
-            email:email
+            email:email,
         })
+
+        localStorage.setItem("peopleList",JSON.stringify
+        (peopleList));
+        showData();
+        document.getElementById("name").value="";
+        document.getElementById("age").value="";
+        document.getElementById("address").value="";
+        document.getElementById("email").value="";
     }
 }
 
