@@ -74,7 +74,7 @@ function validateForm(){
     return true;
 }
 
-function showDate(){
+function showData(){
     var peopleList;
     if(localStorage.getItem("peopleList")==null){
         peopleList=[];
@@ -89,11 +89,37 @@ function showDate(){
         html +="<td>"+element.age+"</td>"
         html +="<td>"+element.address+"</td>"
         html +="<td>"+element.email+"</td>"
-        html +='<td><button onclick="deleteData('+
-        index+
-        ')" class="btn btn-danger">Delate</button><button
-        onclick="updateData(' +
-        index+
-        ')" class="btn btn-danger">Delate</button>'
+        html +='<td><button onclick="deleteData('+ 
+        index +
+        ')" class="btn btn-danger">delete</button><button onclick="updateData(' + index + ')"  class="btn btn-warning m-2 ">delete</button></td>'
+        html +="</tr>";
     })
+
+document.querySelector("#crudTable tbody").innerHTML=html;
 }
+
+document.onload=showData();
+
+function AddData(){
+    if(validateForm()==true){
+        let name=document.getElementById("name").value;
+        let age=document.getElementById("age").value;
+        let address=document.getElementById("address").value;
+        let email=document.getElementById("email").value;
+
+        let peopleList;
+        if(localStorage.getItem("peopleList")==null){
+            peopleList=[];
+        }else{
+            peopleList=JSON.parse(localStorage.getItem("peopleList"))
+        }
+
+        peopleList.push({
+            name:name,
+            age:age,
+            address:address,
+            email:email
+        })
+    }
+}
+
