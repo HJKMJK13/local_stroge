@@ -131,3 +131,17 @@ function AddData(){
     }
 }
 
+function deleteData(index){
+    let peopleList;
+    if(localStorage.getItem("peopleList")==null){
+        peopleList=[]
+    
+    }
+    else{
+        peopleList=JSON.parse(localStorage.getItem(peopleList));
+    }
+    peopleList.splice(index,1);
+    localStorage.setItem("peopleList",JSON.stringify(peopleList))
+    showData();
+}
+
