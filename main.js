@@ -67,6 +67,33 @@ function validateForm(){
         return false;
     }
     else if(email.includes("@")){
-        
+        alert("invalid email address")
+        return false;
     }
+
+    return true;
+}
+
+function showDate(){
+    var peopleList;
+    if(localStorage.getItem("peopleList")==null){
+        peopleList=[];
+    }
+    else{
+        peopleList=JSON.parse(localStorage.getItem("peopleList"))
+    }
+
+    let html="";
+    peopleList.forEach(function(element,index){
+        html +="<td>"+element.name+"</td>"
+        html +="<td>"+element.age+"</td>"
+        html +="<td>"+element.address+"</td>"
+        html +="<td>"+element.email+"</td>"
+        html +='<td><button onclick="deleteData('+
+        index+
+        ')" class="btn btn-danger">Delate</button><button
+        onclick="updateData(' +
+        index+
+        ')" class="btn btn-danger">Delate</button>'
+    })
 }
